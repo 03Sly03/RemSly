@@ -23,7 +23,7 @@ namespace RemSlyCore.Models
         [Required]
         public string? Address { get; set; }
         [Required]
-        public string PostalCode { get; set; }
+        public string? PostalCode { get; set; }
         [Required]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid phone number")]
         public string? PhoneNumber { get; set; }
@@ -35,6 +35,10 @@ namespace RemSlyCore.Models
         public string? PassWord { get; set; }
         [Required]
         public bool IsAdmin { get; set; } = false;
+
+        public List<Session> Reservations_Sessions { get; set; }
+        public List<Club> Favorites_Clubs { get; set; }
+        public List<Session> Favorites_Sessions { get; set; }
     }
 
     public enum Gender
