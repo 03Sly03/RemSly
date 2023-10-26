@@ -32,5 +32,7 @@ namespace RemSlyCore.Models
         public List<Material>? Materials { get; set; }
         [Required]
         public bool IsLadiesOnly { get; set; }
+        [Required]
+        public bool Is24h { get; set; }
     }
 }
