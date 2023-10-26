@@ -12,3 +12,30 @@ code {
   background-color: #1b6ec2;
   border-color: #1861ac;
 }
+
+.registerCard {
+    width: 80vw;
+}
+
+.registerCol {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home-title {
+    color: red;
+}
+
+.home-card {
+    margin: 80px 0;
+}
+
+.home-card-img {
+    height: 280px;
+    object-fit: cover;
+}
+
+.club-card {
+    gap: 40px;
+}
