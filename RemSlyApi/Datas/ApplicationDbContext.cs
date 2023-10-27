@@ -10,6 +10,12 @@ namespace RemSlyApi.Datas
 
         public DbSet<Club> Clubs { get; set; }
 
+        public DbSet<Session> Sessions { get; set; }
+
+        public DbSet<Material> Materials { get; set; }
+
+        public DbSet<Commentary> Commentaries { get; set; }
+
         //public DbSet<Staff> Staffs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
