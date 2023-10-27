@@ -27,6 +27,8 @@ namespace RemSlyCore.Models
         //public Dictionary<User> Notes {  get; set; }          // Voir pour la création
         
         public int Score { get; set; }
+        public int ClubId { get; set; }
+        public Club? Club { get; set; }
         public List<Commentary>? Comments { get; set; }
         //public List<User>? Users { get; set; }
     }
