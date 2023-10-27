@@ -34,20 +34,20 @@ const Home = ({ keyword, setKeyword }) => {
         <div>
             <h1 className="home-title">Une salle de sport pour être en FoForme !!</h1>
             <h2>Filtres</h2>
-                <FormGroup>
-                    <Label for="searchBar">Rechercher une salle de sport</Label>
-                    <Input
-                        className="home-search-bar"
-                        type="text"
-                        name="searchBar"
-                        id="searchBar"
-                        style={barStyling}
-                        key="random1"
-                        value={keyword}
-                        placeholder={"Chercher"}
-                        onChange={(e) => setKeyword(e.target.value)}
-                    />
-                </FormGroup>
+            <FormGroup>
+                <Label for="searchBar">Rechercher une salle de sport</Label>
+                <Input
+                    className="home-search-bar"
+                    type="text"
+                    name="searchBar"
+                    id="searchBar"
+                    style={barStyling}
+                    key="random1"
+                    value={keyword}
+                    placeholder={"Chercher"}
+                    onChange={(e) => setKeyword(e.target.value)}
+                />
+            </FormGroup>
             <div className="border border-dark p-3 flex">
                 <FormGroup className="Home-select-town w-25">
                     <Label for="selectTown">
@@ -78,34 +78,40 @@ const Home = ({ keyword, setKeyword }) => {
                     </Input>
                 </FormGroup>
             </div>
-            {clubs.map(club => (
+            {clubs.length !== 0 ?
+                <div>
+                    {clubs.map(club => (
 
-                <NavLink key={ club.id } tag={Link} to={`/Club/${club.id}`} state={{ id: club.id }}>
-                    <Card className="my-100 home-card">
-                        <CardImg
-                            alt="Card image cap"
-                            src={ club.imageUrl }
-                            className="home-card-img"
-                            top
-                            width="100%"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                { club.name }
-                            </CardTitle>
-                            <CardText>
-                                { club.description }
-                            </CardText>
-                            <CardText>
-                                <small className="text-muted">
-                                    Visitez cette salle de sport !
-                                </small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                </NavLink>
+                        <NavLink key={club.id} tag={Link} to={`/Club/${club.id}`} state={{ id: club.id }}>
+                            <Card className="my-100 home-card">
+                                <CardImg
+                                    alt="Card image cap"
+                                    src={club.imageUrl}
+                                    className="home-card-img"
+                                    top
+                                    width="100%"
+                                />
+                                <CardBody>
+                                    <CardTitle tag="h5">
+                                        {club.name}
+                                    </CardTitle>
+                                    <CardText>
+                                        {club.description}
+                                    </CardText>
+                                    <CardText>
+                                        <small className="text-muted">
+                                            Visitez cette salle de sport !
+                                        </small>
+                                    </CardText>
+                                </CardBody>
+                            </Card>
+                        </NavLink>
 
-            ))}
+                    ))}
+                </div>
+                :
+                <div className="text-center mt-5 display-1">Loading...</div>
+            }
         </div>
     );
 }
