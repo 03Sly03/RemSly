@@ -15,6 +15,7 @@ builder.Services.AddSwaggerGen();
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IRepository<Club>, ClubRepository>();
+builder.Services.AddScoped<IRepository<Session>, SessionRepository>();
 builder.Services.AddControllers().AddJsonOptions(x =>
                             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
