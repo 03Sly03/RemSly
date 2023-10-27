@@ -1,4 +1,4 @@
-﻿import React, { Component } from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
     NavLink,
@@ -9,16 +9,27 @@ import {
     CardText
 } from "reactstrap";
 
-export class Home extends Component {
-    static displayName = Home.name;
-    id = 1;
+const Home = () => {
 
-    render() {
-        return (
+    const [clubs, setClubs] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch("https://localhost:7069/api/club");
+            const data = await response.json();
+            setClubs(data);
+        }
+        fetchData()
+    }, []);
+
+
+    return (
+        <div>
+            <h1 className="home-title">Une salle de sport pour être en FoForme !!</h1>
             <div>
-                <h1 className="home-title">Une salle de sport pour être en FoForme !!</h1>
-                <div>
-                    <NavLink tag={Link} to={`/Club/1`} state={{ id: 1 }}>
+                {clubs.map(club => (
+
+                    <NavLink tag={Link} to={`/Club/${club.id}`} state={{ id: club.id }}>
                         <Card className="my-100 home-card">
                             <CardImg
                                 alt="Card image cap"
@@ -29,7 +40,7 @@ export class Home extends Component {
                             />
                             <CardBody>
                                 <CardTitle tag="h5">
-                                    Anthony Club
+                                    { club.name }
                                 </CardTitle>
                                 <CardText>
                                     This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
@@ -42,98 +53,11 @@ export class Home extends Component {
                             </CardBody>
                         </Card>
                     </NavLink>
-                    <NavLink tag={Link} to={`/Club/2`} state={{ id: 2 }}>
-                        <Card className="my-100 home-card">
-                            <CardImg
-                                alt="Card image cap"
-                                src="https://blogscdn.thehut.net/app/uploads/sites/442/2022/11/john-arano-h4i9G-de7Po-unsplash_1669026578.jpg"
-                                className="home-card-img"
-                                top
-                                width="100%"
-                            />
-                            <CardBody>
-                                <CardTitle tag="h5">
-                                    Card Title
-                                </CardTitle>
-                                <CardText>
-                                    This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                                </CardText>
-                                <CardText>
-                                    <small className="text-muted">
-                                        Last updated 3 mins ago
-                                    </small>
-                                </CardText>
-                            </CardBody>
-                        </Card>
-                    </NavLink>
-                    <Card className="my-100 home-card">
-                        <CardImg
-                            alt="Card image cap"
-                            src="https://www.ericfavre.com/lifestyle/wp-content/uploads/2020/05/musculation-pour-qui.jpg"
-                            className="home-card-img"
-                            top
-                            width="100%"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                Card Title
-                            </CardTitle>
-                            <CardText>
-                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                            </CardText>
-                            <CardText>
-                                <small className="text-muted">
-                                    Last updated 3 mins ago
-                                </small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                    <Card className="my-100 home-card">
-                        <CardImg
-                            alt="Card image cap"
-                            src="https://www.sport-passion.fr/pictures/musculation-femme-FB.jpg"
-                            className="home-card-img"
-                            top
-                            width="100%"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                Card Title
-                            </CardTitle>
-                            <CardText>
-                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                            </CardText>
-                            <CardText>
-                                <small className="text-muted">
-                                    Last updated 3 mins ago
-                                </small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                    <Card className="my-100 home-card">
-                        <CardImg
-                            alt="Card image cap"
-                            src="https://www.sci-sport.com/style/img/vignette270.jpg"
-                            className="home-card-img"
-                            top
-                            width="100%"
-                        />
-                        <CardBody>
-                            <CardTitle tag="h5">
-                                Card Title
-                            </CardTitle>
-                            <CardText>
-                                This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                            </CardText>
-                            <CardText>
-                                <small className="text-muted">
-                                    Last updated 3 mins ago
-                                </small>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                </div>
+
+                ))}
             </div>
-        );
-    }
+        </div>
+    );
 }
+
+export default Home;
