@@ -13,11 +13,14 @@ namespace RemSlyCore.Models
         public int Id { get; set; }
         [Required]
         public string? Name { get; set; }
-        //public string Description { get; set; }
+        public string? Description { get; set; }
         [Required]
         public string? Address { get; set; }
         [Required]
         public string? PostalCode { get; set; }
+
+        public string? ImageUrl { get; set; }
+
         [Required]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid phone number")]
         public string? PhoneNumber { get; set; }
