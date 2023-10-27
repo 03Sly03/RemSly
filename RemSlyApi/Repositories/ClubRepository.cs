@@ -22,12 +22,12 @@ namespace RemSlyApi.Repositories
         }
         public async Task<Club> GetById(int id)
         {
-            return await _dbContext.Clubs.FindAsync(id);
+            return await _dbContext.Clubs.Include(c => c.Sessions).FirstOrDefaultAsync(c => c.Id == id);
         }
 
         public async Task<Club?> Get(Expression<Func<Club, bool>> predicate)
         {
-            return await _dbContext.Clubs.FirstOrDefaultAsync(predicate);
+            return await _dbContext.Clubs.Include(c => c.Sessions).FirstOrDefaultAsync(predicate);
         }
 
         public async Task<List<Club>> GetAll(Expression<Func<Club, bool>> predicate)
