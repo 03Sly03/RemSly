@@ -10,7 +10,7 @@ namespace RemSlyApi.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Material",
+                name: "Materials",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -19,7 +19,7 @@ namespace RemSlyApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Material", x => x.Id);
+                    table.PrimaryKey("PK_Materials", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -51,8 +51,10 @@ namespace RemSlyApi.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Address = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OpeningHours = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -87,44 +89,46 @@ namespace RemSlyApi.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_ClubMaterial_Material_MaterialsId",
+                        name: "FK_ClubMaterial_Materials_MaterialsId",
                         column: x => x.MaterialsId,
-                        principalTable: "Material",
+                        principalTable: "Materials",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Session",
+                name: "Sessions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Schedules = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CapacityMax = table.Column<int>(type: "int", nullable: false),
                     IsComplete = table.Column<bool>(type: "bit", nullable: false),
                     Score = table.Column<int>(type: "int", nullable: false),
-                    ClubId = table.Column<int>(type: "int", nullable: true),
+                    ClubId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Session", x => x.Id);
+                    table.PrimaryKey("PK_Sessions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Session_Clubs_ClubId",
+                        name: "FK_Sessions_Clubs_ClubId",
                         column: x => x.ClubId,
                         principalTable: "Clubs",
-                        principalColumn: "Id");
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Session_User_UserId",
+                        name: "FK_Sessions_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
-                name: "Commentary",
+                name: "Commentaries",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -136,15 +140,15 @@ namespace RemSlyApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Commentary", x => x.Id);
+                    table.PrimaryKey("PK_Commentaries", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Commentary_Session_SessionId",
+                        name: "FK_Commentaries_Sessions_SessionId",
                         column: x => x.SessionId,
-                        principalTable: "Session",
+                        principalTable: "Sessions",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Commentary_User_UserId",
+                        name: "FK_Commentaries_User_UserId",
                         column: x => x.UserId,
                         principalTable: "User",
                         principalColumn: "Id",
@@ -153,13 +157,21 @@ namespace RemSlyApi.Migrations
 
             migrationBuilder.InsertData(
                 table: "Clubs",
-                columns: new[] { "Id", "Address", "Email", "Is24h", "IsLadiesOnly", "Name", "OpeningHours", "PhoneNumber", "PostalCode", "UserId" },
-                values: new object[] { 1, "rue Douchet", "anthony@gmail.com", false, false, "Antho Club", "10h / 20h", "0606060606", "59000", null });
-
-            migrationBuilder.InsertData(
-                table: "Clubs",
-                columns: new[] { "Id", "Address", "Email", "Is24h", "IsLadiesOnly", "Name", "OpeningHours", "PhoneNumber", "PostalCode", "UserId" },
-                values: new object[] { 2, "rue Hugo", "zumba@gmail.com", true, true, "Zumba Club", "20h / 2h", "0707070707", "62000", null });
+                columns: new[] { "Id", "Address", "Description", "Email", "ImageUrl", "Is24h", "IsLadiesOnly", "Name", "OpeningHours", "PhoneNumber", "PostalCode", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "43 Bd de Valmy, 59650 Villeneuve-d'Ascq", "Bienvenu chez Sunstar! Nous disposons d'une large gamme d'appareils de fitness et de cours collectifs. Passez nous voir au club pour choisir l'activité sportive qui vous convient le mieux.", "Sunstar@club.com", "/images/club/Abbeville.jpg", false, false, "Sunstar Club", "10h00 - 20h00", "0366333344", "59650", null },
+                    { 2, "292 Rue des Fusillés, 59493 Villeneuve-d'Ascq", "Bienvenu chez Cortex! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.", "Cortex@club.com", "\"/images/club/Argentan.webp\"", false, false, "Cortex Club", "09h00 - 21h00", "0320597941", "59493", null },
+                    { 3, "5 Pl. Pierre de Coubertin, 59790 Ronchin", "Bienvenu chez Cabana ! Adonnez-vous à votre activité sportive favorite chez Cabana Ladies et retrouvez la forme, sur nos appareils de fitness ou en suivant des cours collectifs.", "zumba@hotmail.com", "\"/images/club/Belgique.jpg\"", false, true, "Cabana Club", "08h00 - 22h00", "0359613012", "59790", null },
+                    { 4, "124 Rue de Douai, 59000 Lille", "Bienvenu chez Kinetic ! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.", "Kinetic@outlook.com", "\"/images/club/Bessines.jpg\"", false, false, "Kinetic Club", "09h30 - 21h00", "0320597941", "59000", null },
+                    { 5, "20 Rue des Meuniers, 59810 Lesquin", "Bienvenu chez Optimum 24/7 ! Besoin de vous entrainer à toute heure, nous disposons de la solution d'entraînement qui répond à vos besoins : Notre club vous accueille 24h/24h !", "Optimum@yahoo.com", "\"/images/club/Bruay.jpg\"", true, false, "Optimum Club", "00h00 - 24h00", "0771630955", "59810", null },
+                    { 6, "202 Rue Solférino, 59000 Lille", "Bienvenu chez Magellan ! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.", "Magellan@gmail.com", "\"/images/club/Cambrai.jpg\"", false, false, "Magellan Club", "06h00 - 23h00", "0967583899", "59000", null },
+                    { 7, "4 Rue Professeur Langevin, 59000 Lille", "Bienvenu chez Pixel ! Nous disposons d'une large gamme d'appareils de fitness et de cours collectifs. Passez nous voir au club pour choisir l'activité sportive qui vous convient le mieux.", "Pixel@gmail.com", "\"/images/club/Courcelles.jpg\"", false, false, "Pixel Club", "07h00 - 22h00", "0320309838", "59000", null },
+                    { 8, "3 bis Rue Edouard Delesalle, 59000 Lille", "Bienvenu chez Axion ! Quels que soient votre âge, votre niveau de pratique ou l'heure, nous serons à vos côtés pour répondre à vos besoins spécifiques.", "Axion@gmail.com", "\"/images/club/Dax.jpg\"", true, false, "Axion Club", "06h00 - 23h00", "0320550808", "59000", null },
+                    { 9, "124 Rue de Douai, 59000 Lille", "Bienvenu chez Panda ! Notre club dédié au femme est là pour vous accompagner dans votre remise en forme en proposant de nombreux cours collectifs.", "Panda@gmail.com", "\"/images/club/Jodigne.jpg\"", false, true, "Panda Club", "09h30 - 21h00", "0320597941", "59000", null },
+                    { 10, "124 Rue de Douai, 59000 Lille", "Bienvenu chez Vita ! Notre club vous accompagnes 24h/24 tous les jours de la semaine, dans vos besoins sportifs pour être plein de vitalité !", "Vita@gmail.com", "\"/images/club/Pau.jpg\"", true, false, "Vita Club", "00h00 - 24h00", "0320597941", "59000", null },
+                    { 11, "62 Rue d'Iéna, 59000 Lille", "Bienvenu chez Luminous Club ! Venez découvrir le sport autrement dans notre salle sur les toits de la ville", "Luminous@gmail.com", "\"/images/club/Vesoul.jpg\"", false, false, "Luminous Club", "10h00 - 17h00", "0362859280", "59000", null }
+                });
 
             migrationBuilder.CreateIndex(
                 name: "IX_ClubMaterial_MaterialsId",
@@ -172,23 +184,23 @@ namespace RemSlyApi.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Commentary_SessionId",
-                table: "Commentary",
+                name: "IX_Commentaries_SessionId",
+                table: "Commentaries",
                 column: "SessionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Commentary_UserId",
-                table: "Commentary",
+                name: "IX_Commentaries_UserId",
+                table: "Commentaries",
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Session_ClubId",
-                table: "Session",
+                name: "IX_Sessions_ClubId",
+                table: "Sessions",
                 column: "ClubId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Session_UserId",
-                table: "Session",
+                name: "IX_Sessions_UserId",
+                table: "Sessions",
                 column: "UserId");
         }
 
@@ -198,13 +210,13 @@ namespace RemSlyApi.Migrations
                 name: "ClubMaterial");
 
             migrationBuilder.DropTable(
-                name: "Commentary");
+                name: "Commentaries");
 
             migrationBuilder.DropTable(
-                name: "Material");
+                name: "Materials");
 
             migrationBuilder.DropTable(
-                name: "Session");
+                name: "Sessions");
 
             migrationBuilder.DropTable(
                 name: "Clubs");

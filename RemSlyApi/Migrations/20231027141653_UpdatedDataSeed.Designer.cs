@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RemSlyApi.Datas;
 
@@ -11,9 +12,10 @@ using RemSlyApi.Datas;
 namespace RemSlyApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20231027141653_UpdatedDataSeed")]
+    partial class UpdatedDataSeed
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -97,7 +99,7 @@ namespace RemSlyApi.Migrations
                             Address = "43 Bd de Valmy, 59650 Villeneuve-d'Ascq",
                             Description = "Bienvenu chez Sunstar! Nous disposons d'une large gamme d'appareils de fitness et de cours collectifs. Passez nous voir au club pour choisir l'activité sportive qui vous convient le mieux.",
                             Email = "Sunstar@club.com",
-                            ImageUrl = "/Images/Club/Abbeville.jpg",
+                            ImageUrl = "/images/club/Abbeville.jpg",
                             Is24h = false,
                             IsLadiesOnly = false,
                             Name = "Sunstar Club",
@@ -111,7 +113,7 @@ namespace RemSlyApi.Migrations
                             Address = "292 Rue des Fusillés, 59493 Villeneuve-d'Ascq",
                             Description = "Bienvenu chez Cortex! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.",
                             Email = "Cortex@club.com",
-                            ImageUrl = "/Images/Club/Argentan.webp",
+                            ImageUrl = "\"/images/club/Argentan.webp\"",
                             Is24h = false,
                             IsLadiesOnly = false,
                             Name = "Cortex Club",
@@ -125,7 +127,7 @@ namespace RemSlyApi.Migrations
                             Address = "5 Pl. Pierre de Coubertin, 59790 Ronchin",
                             Description = "Bienvenu chez Cabana ! Adonnez-vous à votre activité sportive favorite chez Cabana Ladies et retrouvez la forme, sur nos appareils de fitness ou en suivant des cours collectifs.",
                             Email = "zumba@hotmail.com",
-                            ImageUrl = "/Images/Club/Belgique.jpg",
+                            ImageUrl = "\"/images/club/Belgique.jpg\"",
                             Is24h = false,
                             IsLadiesOnly = true,
                             Name = "Cabana Club",
@@ -139,7 +141,7 @@ namespace RemSlyApi.Migrations
                             Address = "124 Rue de Douai, 59000 Lille",
                             Description = "Bienvenu chez Kinetic ! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.",
                             Email = "Kinetic@outlook.com",
-                            ImageUrl = "/Images/Club/Bessines.jpg",
+                            ImageUrl = "\"/images/club/Bessines.jpg\"",
                             Is24h = false,
                             IsLadiesOnly = false,
                             Name = "Kinetic Club",
@@ -153,7 +155,7 @@ namespace RemSlyApi.Migrations
                             Address = "20 Rue des Meuniers, 59810 Lesquin",
                             Description = "Bienvenu chez Optimum 24/7 ! Besoin de vous entrainer à toute heure, nous disposons de la solution d'entraînement qui répond à vos besoins : Notre club vous accueille 24h/24h !",
                             Email = "Optimum@yahoo.com",
-                            ImageUrl = "/Images/Club/Bruay.jpg",
+                            ImageUrl = "\"/images/club/Bruay.jpg\"",
                             Is24h = true,
                             IsLadiesOnly = false,
                             Name = "Optimum Club",
@@ -167,7 +169,7 @@ namespace RemSlyApi.Migrations
                             Address = "202 Rue Solférino, 59000 Lille",
                             Description = "Bienvenu chez Magellan ! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.",
                             Email = "Magellan@gmail.com",
-                            ImageUrl = "/Images/Club/Cambrai.jpg",
+                            ImageUrl = "\"/images/club/Cambrai.jpg\"",
                             Is24h = false,
                             IsLadiesOnly = false,
                             Name = "Magellan Club",
@@ -181,7 +183,7 @@ namespace RemSlyApi.Migrations
                             Address = "4 Rue Professeur Langevin, 59000 Lille",
                             Description = "Bienvenu chez Pixel ! Nous disposons d'une large gamme d'appareils de fitness et de cours collectifs. Passez nous voir au club pour choisir l'activité sportive qui vous convient le mieux.",
                             Email = "Pixel@gmail.com",
-                            ImageUrl = "/Images/Club/Courcelles.jpg",
+                            ImageUrl = "\"/images/club/Courcelles.jpg\"",
                             Is24h = false,
                             IsLadiesOnly = false,
                             Name = "Pixel Club",
@@ -195,7 +197,7 @@ namespace RemSlyApi.Migrations
                             Address = "3 bis Rue Edouard Delesalle, 59000 Lille",
                             Description = "Bienvenu chez Axion ! Quels que soient votre âge, votre niveau de pratique ou l'heure, nous serons à vos côtés pour répondre à vos besoins spécifiques.",
                             Email = "Axion@gmail.com",
-                            ImageUrl = "/Images/Club/Dax.jpg",
+                            ImageUrl = "\"/images/club/Dax.jpg\"",
                             Is24h = true,
                             IsLadiesOnly = false,
                             Name = "Axion Club",
@@ -209,7 +211,7 @@ namespace RemSlyApi.Migrations
                             Address = "124 Rue de Douai, 59000 Lille",
                             Description = "Bienvenu chez Panda ! Notre club dédié au femme est là pour vous accompagner dans votre remise en forme en proposant de nombreux cours collectifs.",
                             Email = "Panda@gmail.com",
-                            ImageUrl = "/Images/Club/Jodoigne.jpeg",
+                            ImageUrl = "\"/images/club/Jodigne.jpg\"",
                             Is24h = false,
                             IsLadiesOnly = true,
                             Name = "Panda Club",
@@ -223,7 +225,7 @@ namespace RemSlyApi.Migrations
                             Address = "124 Rue de Douai, 59000 Lille",
                             Description = "Bienvenu chez Vita ! Notre club vous accompagnes 24h/24 tous les jours de la semaine, dans vos besoins sportifs pour être plein de vitalité !",
                             Email = "Vita@gmail.com",
-                            ImageUrl = "/Images/Club/Pau.jpg",
+                            ImageUrl = "\"/images/club/Pau.jpg\"",
                             Is24h = true,
                             IsLadiesOnly = false,
                             Name = "Vita Club",
@@ -237,7 +239,7 @@ namespace RemSlyApi.Migrations
                             Address = "62 Rue d'Iéna, 59000 Lille",
                             Description = "Bienvenu chez Luminous Club ! Venez découvrir le sport autrement dans notre salle sur les toits de la ville",
                             Email = "Luminous@gmail.com",
-                            ImageUrl = "/Images/Club/Vesoul.jpg",
+                            ImageUrl = "\"/images/club/Vesoul.jpg\"",
                             Is24h = false,
                             IsLadiesOnly = false,
                             Name = "Luminous Club",
@@ -342,7 +344,7 @@ namespace RemSlyApi.Migrations
                             Id = 1,
                             CapacityMax = 10,
                             ClubId = 1,
-                            ImageUrl = "/Images/Session/GroupClasses.jpg",
+                            ImageUrl = "/images/session/GroupClasses.jpg",
                             IsComplete = false,
                             Name = "Cours Collectifs Live",
                             Schedules = "10h00",
@@ -353,7 +355,7 @@ namespace RemSlyApi.Migrations
                             Id = 2,
                             CapacityMax = 20,
                             ClubId = 1,
-                            ImageUrl = "/Images/Session/GroupClasses.jpg",
+                            ImageUrl = "/images/session/GroupClasses.jpg",
                             IsComplete = false,
                             Name = "Cours Collectifs Virtuel",
                             Schedules = "15h00",
@@ -364,7 +366,7 @@ namespace RemSlyApi.Migrations
                             Id = 3,
                             CapacityMax = 2,
                             ClubId = 1,
-                            ImageUrl = "/Images/Session/PersonalTrainer.jpeg",
+                            ImageUrl = "/images/session/PersonalTrainer.jpeg",
                             IsComplete = false,
                             Name = "Entraineur Personnel",
                             Schedules = "18h00",

@@ -12,7 +12,7 @@ using RemSlyApi.Datas;
 namespace RemSlyApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20231026210849_FirstMigration")]
+    [Migration("20231027133909_FirstMigration")]
     partial class FirstMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,8 +51,14 @@ namespace RemSlyApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Is24h")
@@ -90,26 +96,156 @@ namespace RemSlyApi.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "rue Douchet",
-                            Email = "anthony@gmail.com",
+                            Address = "43 Bd de Valmy, 59650 Villeneuve-d'Ascq",
+                            Description = "Bienvenu chez Sunstar! Nous disposons d'une large gamme d'appareils de fitness et de cours collectifs. Passez nous voir au club pour choisir l'activité sportive qui vous convient le mieux.",
+                            Email = "Sunstar@club.com",
+                            ImageUrl = "/images/club/Abbeville.jpg",
                             Is24h = false,
                             IsLadiesOnly = false,
-                            Name = "Antho Club",
-                            OpeningHours = "10h / 20h",
-                            PhoneNumber = "0606060606",
-                            PostalCode = "59000"
+                            Name = "Sunstar Club",
+                            OpeningHours = "10h00 - 20h00",
+                            PhoneNumber = "0366333344",
+                            PostalCode = "59650"
                         },
                         new
                         {
                             Id = 2,
-                            Address = "rue Hugo",
-                            Email = "zumba@gmail.com",
-                            Is24h = true,
+                            Address = "292 Rue des Fusillés, 59493 Villeneuve-d'Ascq",
+                            Description = "Bienvenu chez Cortex! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.",
+                            Email = "Cortex@club.com",
+                            ImageUrl = "\"/images/club/Argentan.webp\"",
+                            Is24h = false,
+                            IsLadiesOnly = false,
+                            Name = "Cortex Club",
+                            OpeningHours = "09h00 - 21h00",
+                            PhoneNumber = "0320597941",
+                            PostalCode = "59493"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Address = "5 Pl. Pierre de Coubertin, 59790 Ronchin",
+                            Description = "Bienvenu chez Cabana ! Adonnez-vous à votre activité sportive favorite chez Cabana Ladies et retrouvez la forme, sur nos appareils de fitness ou en suivant des cours collectifs.",
+                            Email = "zumba@hotmail.com",
+                            ImageUrl = "\"/images/club/Belgique.jpg\"",
+                            Is24h = false,
                             IsLadiesOnly = true,
-                            Name = "Zumba Club",
-                            OpeningHours = "20h / 2h",
-                            PhoneNumber = "0707070707",
-                            PostalCode = "62000"
+                            Name = "Cabana Club",
+                            OpeningHours = "08h00 - 22h00",
+                            PhoneNumber = "0359613012",
+                            PostalCode = "59790"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Address = "124 Rue de Douai, 59000 Lille",
+                            Description = "Bienvenu chez Kinetic ! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.",
+                            Email = "Kinetic@outlook.com",
+                            ImageUrl = "\"/images/club/Bessines.jpg\"",
+                            Is24h = false,
+                            IsLadiesOnly = false,
+                            Name = "Kinetic Club",
+                            OpeningHours = "09h30 - 21h00",
+                            PhoneNumber = "0320597941",
+                            PostalCode = "59000"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Address = "20 Rue des Meuniers, 59810 Lesquin",
+                            Description = "Bienvenu chez Optimum 24/7 ! Besoin de vous entrainer à toute heure, nous disposons de la solution d'entraînement qui répond à vos besoins : Notre club vous accueille 24h/24h !",
+                            Email = "Optimum@yahoo.com",
+                            ImageUrl = "\"/images/club/Bruay.jpg\"",
+                            Is24h = true,
+                            IsLadiesOnly = false,
+                            Name = "Optimum Club",
+                            OpeningHours = "00h00 - 24h00",
+                            PhoneNumber = "0771630955",
+                            PostalCode = "59810"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Address = "202 Rue Solférino, 59000 Lille",
+                            Description = "Bienvenu chez Magellan ! Notre club est équipé d'une large gamme d'appareils de fitness et propose de nombreux cours collectifs.",
+                            Email = "Magellan@gmail.com",
+                            ImageUrl = "\"/images/club/Cambrai.jpg\"",
+                            Is24h = false,
+                            IsLadiesOnly = false,
+                            Name = "Magellan Club",
+                            OpeningHours = "06h00 - 23h00",
+                            PhoneNumber = "0967583899",
+                            PostalCode = "59000"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Address = "4 Rue Professeur Langevin, 59000 Lille",
+                            Description = "Bienvenu chez Pixel ! Nous disposons d'une large gamme d'appareils de fitness et de cours collectifs. Passez nous voir au club pour choisir l'activité sportive qui vous convient le mieux.",
+                            Email = "Pixel@gmail.com",
+                            ImageUrl = "\"/images/club/Courcelles.jpg\"",
+                            Is24h = false,
+                            IsLadiesOnly = false,
+                            Name = "Pixel Club",
+                            OpeningHours = "07h00 - 22h00",
+                            PhoneNumber = "0320309838",
+                            PostalCode = "59000"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Address = "3 bis Rue Edouard Delesalle, 59000 Lille",
+                            Description = "Bienvenu chez Axion ! Quels que soient votre âge, votre niveau de pratique ou l'heure, nous serons à vos côtés pour répondre à vos besoins spécifiques.",
+                            Email = "Axion@gmail.com",
+                            ImageUrl = "\"/images/club/Dax.jpg\"",
+                            Is24h = true,
+                            IsLadiesOnly = false,
+                            Name = "Axion Club",
+                            OpeningHours = "06h00 - 23h00",
+                            PhoneNumber = "0320550808",
+                            PostalCode = "59000"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Address = "124 Rue de Douai, 59000 Lille",
+                            Description = "Bienvenu chez Panda ! Notre club dédié au femme est là pour vous accompagner dans votre remise en forme en proposant de nombreux cours collectifs.",
+                            Email = "Panda@gmail.com",
+                            ImageUrl = "\"/images/club/Jodigne.jpg\"",
+                            Is24h = false,
+                            IsLadiesOnly = true,
+                            Name = "Panda Club",
+                            OpeningHours = "09h30 - 21h00",
+                            PhoneNumber = "0320597941",
+                            PostalCode = "59000"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            Address = "124 Rue de Douai, 59000 Lille",
+                            Description = "Bienvenu chez Vita ! Notre club vous accompagnes 24h/24 tous les jours de la semaine, dans vos besoins sportifs pour être plein de vitalité !",
+                            Email = "Vita@gmail.com",
+                            ImageUrl = "\"/images/club/Pau.jpg\"",
+                            Is24h = true,
+                            IsLadiesOnly = false,
+                            Name = "Vita Club",
+                            OpeningHours = "00h00 - 24h00",
+                            PhoneNumber = "0320597941",
+                            PostalCode = "59000"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            Address = "62 Rue d'Iéna, 59000 Lille",
+                            Description = "Bienvenu chez Luminous Club ! Venez découvrir le sport autrement dans notre salle sur les toits de la ville",
+                            Email = "Luminous@gmail.com",
+                            ImageUrl = "\"/images/club/Vesoul.jpg\"",
+                            Is24h = false,
+                            IsLadiesOnly = false,
+                            Name = "Luminous Club",
+                            OpeningHours = "10h00 - 17h00",
+                            PhoneNumber = "0362859280",
+                            PostalCode = "59000"
                         });
                 });
 
@@ -140,7 +276,7 @@ namespace RemSlyApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Commentary");
+                    b.ToTable("Commentaries");
                 });
 
             modelBuilder.Entity("RemSlyCore.Models.Material", b =>
@@ -157,7 +293,7 @@ namespace RemSlyApi.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Material");
+                    b.ToTable("Materials");
                 });
 
             modelBuilder.Entity("RemSlyCore.Models.Session", b =>
@@ -171,8 +307,11 @@ namespace RemSlyApi.Migrations
                     b.Property<int>("CapacityMax")
                         .HasColumnType("int");
 
-                    b.Property<int?>("ClubId")
+                    b.Property<int>("ClubId")
                         .HasColumnType("int");
+
+                    b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsComplete")
                         .HasColumnType("bit");
@@ -197,7 +336,7 @@ namespace RemSlyApi.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Session");
+                    b.ToTable("Sessions");
                 });
 
             modelBuilder.Entity("RemSlyCore.Models.User", b =>
@@ -294,13 +433,17 @@ namespace RemSlyApi.Migrations
 
             modelBuilder.Entity("RemSlyCore.Models.Session", b =>
                 {
-                    b.HasOne("RemSlyCore.Models.Club", null)
+                    b.HasOne("RemSlyCore.Models.Club", "Club")
                         .WithMany("Sessions")
-                        .HasForeignKey("ClubId");
+                        .HasForeignKey("ClubId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("RemSlyCore.Models.User", null)
                         .WithMany("Favorites_Sessions")
                         .HasForeignKey("UserId");
+
+                    b.Navigation("Club");
                 });
 
             modelBuilder.Entity("RemSlyCore.Models.Club", b =>
