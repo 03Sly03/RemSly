@@ -34,7 +34,6 @@ namespace RemSlyApi.Controllers
         }
 
         [HttpPost]
-        [Authorize]
         public async Task<IActionResult> AddClub([FromBody] Club club)
         {
             var clubId = await _clubRepository.Add(club);
@@ -46,7 +45,6 @@ namespace RemSlyApi.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize]
         public async Task<IActionResult> UpdateClub(int id, [FromBody] Club club)
         {
             var pizz = await _clubRepository.GetById(id);
@@ -61,7 +59,6 @@ namespace RemSlyApi.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
         public async Task<IActionResult> RemoveClub(int id)
         {
             var club = await _clubRepository.GetById(id);
