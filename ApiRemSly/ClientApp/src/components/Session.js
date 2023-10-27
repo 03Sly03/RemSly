@@ -1,4 +1,4 @@
-﻿import React, { useState, useEffect } from 'react';
+﻿import React from 'react';
 import {
     Card,
     CardBody,
@@ -19,25 +19,25 @@ const Session = (props) => {
         >
             <img
                 alt="Card"
-                src="https://picsum.photos/300/200"
+                src={props.img}
             />
             <CardBody>
                 <CardTitle tag="h5">
-                    {props.title}
+                    {props.name}
                 </CardTitle>
                 <CardText>
-                    This is some text within a card body.
+                    Ouverture : {props.shedules}
                 </CardText>
             </CardBody>
             <ListGroup flush>
                 <ListGroupItem>
-                    An item
+                    Capacité maximum : { props.capacityMax }
                 </ListGroupItem>
                 <ListGroupItem>
-                    A second item
+                    { props.isComplete ? "Complet" : "Places disponibles" }
                 </ListGroupItem>
                 <ListGroupItem>
-                    And a third item
+                    note : { props.score }
                 </ListGroupItem>
             </ListGroup>
             <CardBody>
