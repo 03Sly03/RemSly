@@ -25,6 +25,6 @@ namespace RemSlyCore.Models
         
         public int Score { get; set; }
         public List<Commentary>? Comments { get; set; }
-        public List<User>? Users { get; set; }
+        //public List<User>? Users { get; set; }
     }
 }

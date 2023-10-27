@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34202.233
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRemSly", "ApiRemSly\ApiRemSly.csproj", "{803666C8-8A4B-4564-86C2-DB090EEB64AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemSlyReact", "ApiRemSly\RemSlyReact.csproj", "{803666C8-8A4B-4564-86C2-DB090EEB64AC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemSlyCore", "RemSlyCore\RemSlyCore.csproj", "{E1D87CB7-8B59-4E91-BD3B-3D5952FC22D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemSlyCore", "RemSlyCore\RemSlyCore.csproj", "{E1D87CB7-8B59-4E91-BD3B-3D5952FC22D4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RemSlyApi", "RemSlyApi\RemSlyApi.csproj", "{EDCA9275-ED9F-4CE8-B239-5FEAD45EC700}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{E1D87CB7-8B59-4E91-BD3B-3D5952FC22D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1D87CB7-8B59-4E91-BD3B-3D5952FC22D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E1D87CB7-8B59-4E91-BD3B-3D5952FC22D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDCA9275-ED9F-4CE8-B239-5FEAD45EC700}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDCA9275-ED9F-4CE8-B239-5FEAD45EC700}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDCA9275-ED9F-4CE8-B239-5FEAD45EC700}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDCA9275-ED9F-4CE8-B239-5FEAD45EC700}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

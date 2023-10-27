@@ -26,13 +26,9 @@ namespace RemSlyCore.Models
         public string? Email { get; set; }
         [Required]
         public string? OpeningHours { get; set; }
-        [Required]
         public List<Session>? Sessions { get; set; }
-        [Required]
         public List<Material>? Materials { get; set; }
-        [Required]
         public bool IsLadiesOnly { get; set; }
-        [Required]
         public bool Is24h { get; set; }
     }
 }

@@ -36,7 +36,7 @@ namespace RemSlyCore.Models
         [Required]
         public bool IsAdmin { get; set; } = false;
 
-        public List<Session>? Reservations_Sessions { get; set; }
+        //public List<Session>? Reservations_Sessions { get; set; }
         public List<Club>? Favorites_Clubs { get; set; }
         public List<Session>? Favorites_Sessions { get; set; }
     }
