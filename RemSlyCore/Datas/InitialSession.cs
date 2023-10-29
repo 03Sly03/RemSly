@@ -11,8 +11,8 @@ namespace RemSlyCore.Datas
     {
         public static readonly List<Session> sessionInit = new List<Session>()
         {
-        #region Sessions pour le Club 1 
 
+        #region Sessions pour le Club 1 
             new Session()
             {
                 Id=1,

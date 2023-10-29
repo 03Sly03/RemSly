@@ -16,13 +16,13 @@ namespace RemSlyApi.Datas
 
         public DbSet<Commentary> Commentaries { get; set; }
 
-        //public DbSet<Staff> Staffs { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Club>().HasData(InitialClub.clubInit);
             modelBuilder.Entity<Session>().HasData(InitialClub.sessionInit);
-            //modelBuilder.Entity<Staff>().HasData(InitialStaff.staffs);
+            modelBuilder.Entity<User>().HasData(InitialUser.UserInit);
         }
 
 
