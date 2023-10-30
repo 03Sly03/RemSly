@@ -16,15 +16,10 @@ namespace RemSlyCore.Models
         [Required]
         [RegularExpression(@"^[A-Z].*", ErrorMessage = "LastName start with an Uppercase Letter !")]
         public string? LastName { get; set; }
-        [Required]
         public Gender Gender { get; set; }
-        [Required]
         public string? AvatarUrl { get; set; }
-        [Required]
         public string? Address { get; set; }
-        [Required]
         public string? PostalCode { get; set; }
-        [Required]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Invalid phone number")]
         public string? PhoneNumber { get; set; }
         [Required]

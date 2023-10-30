@@ -61,7 +61,7 @@ const Session = (props) => {
                     note : {session.score }
                 </ListGroupItem>
                 <ListGroupItem>
-                    <p>commentaire :</p>
+                    <p>commentaires :</p>
                     { session.comments && comments ?
                         session.comments.map((comment) => (
                             <div>

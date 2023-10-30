@@ -24,16 +24,35 @@ const Register = () => {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
     const [checkPassword, setCheckPassword] = React.useState("");
-    //const [isLoggedin, setLoggedin] = React.useState(false);
+    const [isLoggedin, setLoggedin] = React.useState(false);
 
     const submitHandler = (ev) => {
         ev.preventDefault();
-        if (!username || !password) {
+        if (!username || !password || password !== checkPassword) {
             return;
         }
+        fetch("https://localhost:7069/api/Authentication/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: username,
+                password: password,
+                lastname: lastname,
+                firstname: firstname
+            })
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log("RESPONSE from login success ", data);
+                setLoggedin(true);
+            });
+
     }
         return (
             <Container>
+                { !isLoggedin ? 
                 <Row>
                     <Col className="registerCol">
                         <Card className="registerCard">
@@ -114,7 +133,8 @@ const Register = () => {
                         </Card>
                         <p>Déjà inscris ? <NavLink tag={Link} className="text-dark" to="/login">Connectez-vous ICI</NavLink></p>
                     </Col>
-                </Row>
+                    </Row>
+                    : <p>Vous êtes connecté !</p>}
             </Container>
         );
 }
