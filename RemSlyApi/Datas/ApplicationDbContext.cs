@@ -17,6 +17,7 @@ namespace RemSlyApi.Datas
         public DbSet<Commentary> Commentaries { get; set; }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<ReservationSession> ReservationSessions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
