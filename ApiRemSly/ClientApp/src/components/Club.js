@@ -59,13 +59,8 @@ const Club = () => {
                         <div className="d-flex justify-content-center flex-wrap club-card">
                             {club.sessions.map((session) => (
                                 <Session
-                                    key={ session.id }
-                                    name={session.name}
-                                    img={session.imageUrl}
-                                    shedules={session.shedules}
-                                    capacityMax={session.capacityMax}
-                                    isComplete={session.isComplete}
-                                    score={session.score}
+                                    key={session.id}
+                                    id={session.id}
                                 />
                             ))}
                         </div>

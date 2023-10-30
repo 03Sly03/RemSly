@@ -14,12 +14,9 @@ namespace RemSlyCore.Models
         [Required]
         public string? Content { get; set; }
         public int UserId { get; set; }
-        [Required]
         public User? User { get; set; }
-        [Required]
         public int SessionId { get; set; }
-        public Session Session { get; set; }
-        [Required]
+        public Session? Session { get; set; }
         public DateTime Created { get; set; } = DateTime.Now;
     }
 }

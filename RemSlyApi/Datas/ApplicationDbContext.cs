@@ -21,7 +21,8 @@ namespace RemSlyApi.Datas
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Club>().HasData(InitialClub.clubInit);
-            modelBuilder.Entity<Session>().HasData(InitialClub.sessionInit);
+            modelBuilder.Entity<Session>().HasData(InitialSession.sessionInit);
+            modelBuilder.Entity<Commentary>().HasData(InitialCommentary.commentsInit);
             modelBuilder.Entity<User>().HasData(InitialUser.UserInit);
         }
 

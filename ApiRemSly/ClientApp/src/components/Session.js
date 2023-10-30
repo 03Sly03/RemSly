@@ -1,4 +1,4 @@
-﻿import React from 'react';
+﻿import React, { useEffect, useState } from 'react';
 import {
     Card,
     CardBody,
@@ -9,8 +9,29 @@ import {
     CardLink
 } from "reactstrap";
 
+
 const Session = (props) => {
 
+    const [session, setSession] = useState([]);
+    const [comments, setComments] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await fetch(`https://localhost:7069/api/Session/${props.id}`);
+            const data = await response.json();
+            setSession(data);
+        }
+        fetchData()
+        const fetchUserComment = async () => {
+            const response = await fetch(`https://localhost:7069/api/Commentary`);
+            const data = await response.json();
+            setComments(data);
+        }
+        fetchUserComment();
+    }, [props]);
+
+    //console.log("les comments : ", comments[0] ? comments[0].user.firstName : "");
+    //console.log("le commentaire 3 : ", comments ? comments.find((element) => element.id === 3).user.firstName : "");
     return (
         <Card
             style={{
@@ -19,25 +40,41 @@ const Session = (props) => {
         >
             <img
                 alt="Card"
-                src={props.img}
+                src={session.imageUrl}
             />
             <CardBody>
                 <CardTitle tag="h5">
-                    {props.name}
+                    {session.name}
                 </CardTitle>
                 <CardText>
-                    Ouverture : {props.shedules}
+                    Ouverture : {session.schedules}
                 </CardText>
             </CardBody>
             <ListGroup flush>
                 <ListGroupItem>
-                    Capacité maximum : { props.capacityMax }
+                    Capacité maximum : {session.capacityMax }
                 </ListGroupItem>
                 <ListGroupItem>
-                    { props.isComplete ? "Complet" : "Places disponibles" }
+                    {session.isComplete ? "Complet" : "Places disponibles" }
                 </ListGroupItem>
                 <ListGroupItem>
-                    note : { props.score }
+                    note : {session.score }
+                </ListGroupItem>
+                <ListGroupItem>
+                    <p>commentaire :</p>
+                    { session.comments && comments ?
+                        session.comments.map((comment) => (
+                            <div>
+                                <small>
+                                    - {comments.length !== 0 ? comments.find((element) => element.id === comment.id).user.firstName : "" } -
+                                </small>
+                                <blockquote>"{comment.content}"</blockquote>
+                            </div>
+                        ))
+                        
+                        :
+                        <p>Loading...</p>
+                    }
                 </ListGroupItem>
             </ListGroup>
             <CardBody>

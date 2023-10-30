@@ -29,7 +29,7 @@ namespace RemSlyCore.Models
         public int Score { get; set; }
         public int ClubId { get; set; }
         public Club? Club { get; set; }
-        public List<Commentary>? Comments { get; set; }
+        public List<Commentary> Comments { get; set; }
         //public List<User>? Users { get; set; }
     }
 }

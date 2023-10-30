@@ -22,12 +22,12 @@ namespace RemSlyApi.Repositories
         }
         public async Task<Session> GetById(int id)
         {
-            return await _dbContext.Sessions.FindAsync(id);
+            return await _dbContext.Sessions.Include(session => session.Comments).FirstOrDefaultAsync(session => session.Id == id);
         }
 
         public async Task<Session?> Get(Expression<Func<Session, bool>> predicate)
         {
-            return await _dbContext.Sessions.FirstOrDefaultAsync(predicate);
+            return await _dbContext.Sessions.Include(session => session.Comments).FirstOrDefaultAsync(predicate);
         }
 
         public async Task<List<Session>> GetAll(Expression<Func<Session, bool>> predicate)

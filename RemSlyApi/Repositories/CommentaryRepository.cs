@@ -5,7 +5,7 @@ using System.Linq.Expressions;
 
 namespace RemSlyApi.Repositories
 {
-    public class CommentaryRepository
+    public class CommentaryRepository : IRepository<Commentary>
     {
         private ApplicationDbContext _dbContext { get; }
         public CommentaryRepository(ApplicationDbContext dbContext)
@@ -22,12 +22,12 @@ namespace RemSlyApi.Repositories
         }
         public async Task<Commentary> GetById(int id)
         {
-            return await _dbContext.Commentaries.FindAsync(id);
+            return await _dbContext.Commentaries.Include(comment => comment.User).FirstOrDefaultAsync(comment => comment.Id == id);
         }
 
         public async Task<Commentary?> Get(Expression<Func<Commentary, bool>> predicate)
         {
-            return await _dbContext.Commentaries.FirstOrDefaultAsync(predicate);
+            return await _dbContext.Commentaries.Include(comment => comment.User).FirstOrDefaultAsync(predicate);
         }
 
         public async Task<List<Commentary>> GetAll(Expression<Func<Commentary, bool>> predicate)
@@ -37,7 +37,7 @@ namespace RemSlyApi.Repositories
 
         public async Task<List<Commentary>> GetAll()
         {
-            return await _dbContext.Commentaries.ToListAsync();
+            return await _dbContext.Commentaries.Include(comment => comment.User).ToListAsync();
         }
 
         public async Task<bool> Update(Commentary commentary)

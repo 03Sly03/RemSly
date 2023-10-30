@@ -154,17 +154,17 @@ namespace RemSlyCore.Datas
             new Commentary()
             {Id=66, Content ="L'équipe est toujours présente pour nous aider si besoin." ,UserId=5, SessionId = 33},
             new Commentary()
-            {Id=67, Content ="Super séance, le coach ambiance la séance et motive bien l'ensemble des participants." ,UserId=1, SessionId = 34},
+            {Id=67, Content ="Super séance, le coach ambiance la séance et motive bien l'ensemble des participants." ,UserId=1, SessionId = 7},
             new Commentary()
-            {Id=68, Content ="J'ai adoré participé à ce cours collectifs." ,UserId=2, SessionId = 34},
+            {Id=68, Content ="J'ai adoré participé à ce cours collectifs." ,UserId=2, SessionId = 3},
             new Commentary()
-            {Id=69, Content ="Top! Hyper intense." ,UserId=2, SessionId = 35},
+            {Id=69, Content ="Top! Hyper intense." ,UserId=2, SessionId = 3},
             new Commentary()
-            {Id=70, Content ="Ambiance conviviale. Je ne regrette pas mon choix, c’est top!!" ,UserId=4, SessionId = 35},
+            {Id=70, Content ="Ambiance conviviale. Je ne regrette pas mon choix, c’est top!!" ,UserId=4, SessionId = 5},
             new Commentary()
-            {Id=71, Content ="Top! Hyper pédagogue et super séance." ,UserId=3, SessionId = 36},
+            {Id=71, Content ="Top! Hyper pédagogue et super séance." ,UserId=3, SessionId = 1},
             new Commentary()
-            {Id=72, Content ="Le cours est très complet" ,UserId=5, SessionId = 36},
+            {Id=72, Content ="Le cours est très complet" ,UserId=5, SessionId = 3},
             #endregion
         };
     }

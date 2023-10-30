@@ -17,6 +17,7 @@ string connectionString = builder.Configuration.GetConnectionString("DefaultConn
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(connectionString));
 builder.Services.AddScoped<IRepository<Club>, ClubRepository>();
 builder.Services.AddScoped<IRepository<Session>, SessionRepository>();
+builder.Services.AddScoped<IRepository<Commentary>, CommentaryRepository>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
 builder.Services.AddControllers().AddJsonOptions(x =>
                             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
