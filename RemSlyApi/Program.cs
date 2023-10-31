@@ -19,6 +19,7 @@ builder.Services.AddScoped<IRepository<Club>, ClubRepository>();
 builder.Services.AddScoped<IRepository<Session>, SessionRepository>();
 builder.Services.AddScoped<IRepository<Commentary>, CommentaryRepository>();
 builder.Services.AddScoped<IRepository<User>, UserRepository>();
+builder.Services.AddScoped<ReservationSession>();
 builder.Services.AddControllers().AddJsonOptions(x =>
                             x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 

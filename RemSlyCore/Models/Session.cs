@@ -14,7 +14,6 @@ namespace RemSlyCore.Models
         [Required]
         public string? Name { get; set; }
         //public string? Description { get; set; }
-
         public string? ImageUrl { get; set; }
 
         [Required]
@@ -22,14 +21,11 @@ namespace RemSlyCore.Models
         [Required]
         public int CapacityMax { get; set; }
         [Required]
-        public bool IsComplete { get; set; }
-        
-        //public Dictionary<User> Notes {  get; set; }          // Voir pour la création
-        
+        public bool IsComplete { get; set; }  
         public int Score { get; set; }
         public int ClubId { get; set; }
         public Club? Club { get; set; }
-        public List<Commentary> Comments { get; set; }
-        //public List<User>? Users { get; set; }
+        public List<Commentary>? Comments { get; set; }
+        public List<ReservationSession> ReservationSessions { get; set; } = new List<ReservationSession>();
     }
 }
