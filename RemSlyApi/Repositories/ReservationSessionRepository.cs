@@ -12,12 +12,12 @@ namespace RemSlyApi.Repositories
         {
             _dbContext = dbContext;
         }
-        public async Task<bool> Add(ReservationSession ReservationSession)
+        public async Task<int> Add(ReservationSession ReservationSession)
         {
             var addedObj = await _dbContext.ReservationSessions.AddAsync(ReservationSession);
 
             await _dbContext.SaveChangesAsync();
-            return addedObj.Entity.SessionId > 0 && addedObj.Entity.ReservationId > 0;
+            return addedObj.Entity.SessionId;
         }
         public async Task<ReservationSession> GetById(int sessionid, int reservationid)
         {
