@@ -25,6 +25,8 @@ namespace RemSlyApi.Datas
             modelBuilder.Entity<Session>().HasData(InitialSession.sessionInit);
             modelBuilder.Entity<Commentary>().HasData(InitialCommentary.commentsInit);
             modelBuilder.Entity<User>().HasData(InitialUser.UserInit);
+            modelBuilder.Entity<ReservationSession>()
+            .HasKey(rs => new { rs.SessionId, rs.ReservationId });
         }
 
 
