@@ -50,6 +50,7 @@ const Register = () => {
             });
 
     }
+
         return (
             <Container>
                 { !isLoggedin ? 

@@ -15,9 +15,10 @@ import {
 
 
 
-const Home = ({ keyword, setKeyword }) => {
+const Home = () => {
 
     const [clubs, setClubs] = useState([]);
+    const [keyword, setKeyword] = useState([]);
     const barStyling = { "borderRadius": "15px", width: "20rem", background: "#F2F1F9", border: "none", padding: "0.5rem" };
 
     useEffect(() => {

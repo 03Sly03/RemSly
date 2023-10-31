@@ -1,16 +1,13 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Route, Routes } from 'react-router-dom';
 import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
+import Layout from './components/Layout';
 import './custom.css';
 
-export default class App extends Component {
-  static displayName = App.name;
-
-  render() {
+const App = () => {
     return (
       <Layout>
-        <Routes>
+            <Routes>
           {AppRoutes.map((route, index) => {
             const { element, ...rest } = route;
             return <Route key={index} {...rest} element={element} />;
@@ -18,5 +15,6 @@ export default class App extends Component {
         </Routes>
       </Layout>
     );
-  }
 }
+
+export default App;

@@ -1,18 +1,33 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState, createContext } from 'react';
 import { Container } from 'reactstrap';
-import { NavMenu } from './NavMenu';
+import NavMenu from './NavMenu';
+import Footer from './Footer';
 
-export class Layout extends Component {
-  static displayName = Layout.name;
+const ThemeContext = createContext(null);
 
-  render() {
+const Layout = ({ children }) => {
+
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem('remslytoken')) {
+            setIsLoggedIn(true);
+        }
+    }, [isLoggedIn]);
+
+
+
     return (
-      <div>
-        <NavMenu />
-        <Container>
-          {this.props.children}
-        </Container>
-      </div>
+        <div>
+            <NavMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <Container>
+                <ThemeContext.Provider value={isLoggedIn} >
+                    {children}
+                </ThemeContext.Provider>
+            </Container>
+            <Footer />
+        </div>
     );
-  }
 }
+
+export default Layout;
