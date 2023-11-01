@@ -5,11 +5,10 @@ import './NavMenu.css';
 
 const NavMenu = (props) => {
 
-
     const [collapsed, setCollapsed] = useState(true);
 
     const toggleNavbar = () => {
-        setCollapsed(false);
+        setCollapsed(!collapsed);
     }
 
     const disconnect = () => {
@@ -30,7 +29,10 @@ const NavMenu = (props) => {
                             {!props.isLoggedIn ?
                                 <NavLink tag={Link} className="text-dark" to="/login">Se connecter</NavLink>
                                 :
-                                <NavLink tag={Link} className="text-dark" to="/login" onClick={disconnect}>Se déconnecter</NavLink>
+                                <div className="d-flex justify-content-between" style={{width: "400px"} }>
+                                    <NavLink tag={Link} className="text-dark" to="/profile">Bienvenue { props.userLogged.firstName } !</NavLink>
+                                    <NavLink tag={Link} className="text-dark" to="/#" onClick={disconnect}>Se déconnecter</NavLink>
+                                </div>
                             }
                         </NavItem>
                         <NavItem>

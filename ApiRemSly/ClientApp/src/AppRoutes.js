@@ -19,6 +19,10 @@ const AppRoutes = [
     {
         path: '/club/:id',
         element: <Club />
+    },
+    {
+        path: '*',
+        element: <Home />
     }
 ];
 

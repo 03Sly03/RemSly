@@ -1,5 +1,5 @@
-﻿import React from 'react';
-import { Link } from 'react-router-dom';
+﻿import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
     NavLink,
     Container,
@@ -11,16 +11,16 @@ import {
     Form,
     FormGroup,
     Label,
-    Input,
-    //Toast,
-    //ToastBody,
-    //ToastHeader
+    Input
 } from "reactstrap";
+import { ThemeContext } from '../contexts/ThemeContext';
 
-const Login = ({ isLoggedIn, setIsLoggedIn }) => {
-
+const Login = (props) => {
+    const navigate = useNavigate();
+    const { isLoggedIn, setIsLoggedIn, setUserLogged } = useContext(ThemeContext);
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
+    console.log("islogged : ", isLoggedIn);
 
     const loginHandler = (ev) => {
         ev.preventDefault();
@@ -41,7 +41,9 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
             .then((data) => {
                 console.log("RESPONSE from login success ", data);
                 setIsLoggedIn(true);
-                localStorage.setItem('remslytoken', data.token)
+                setUserLogged(data.user);
+                localStorage.setItem('remslytoken', data.token);
+                navigate("/");
             });
 
     }

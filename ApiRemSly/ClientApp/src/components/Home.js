@@ -12,9 +12,6 @@ import {
     Input
 } from "reactstrap";
 
-
-
-
 const Home = () => {
 
     const [clubs, setClubs] = useState([]);
@@ -65,7 +62,7 @@ const Home = () => {
                             Lille
                         </option>
                         <option>
-                            Villeneuve D'Asq
+                            Villeneuve D'Ascq
                         </option>
                         <option>
                             Toulouse

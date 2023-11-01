@@ -1,27 +1,26 @@
-import React, { useEffect, useState, createContext } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Container } from 'reactstrap';
 import NavMenu from './NavMenu';
 import Footer from './Footer';
+import { ThemeContext } from '../contexts/ThemeContext'
 
-const ThemeContext = createContext(null);
 
 const Layout = ({ children }) => {
 
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [userLogged, setUserLogged] = useState({});
 
     useEffect(() => {
         if (localStorage.getItem('remslytoken')) {
             setIsLoggedIn(true);
         }
-    }, [isLoggedIn]);
-
-
+    }, [setIsLoggedIn]);
 
     return (
         <div>
-            <NavMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
+            <NavMenu isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} userLogged={userLogged} />
             <Container>
-                <ThemeContext.Provider value={isLoggedIn} >
+                <ThemeContext.Provider value={{ isLoggedIn, setIsLoggedIn, setUserLogged }} >
                     {children}
                 </ThemeContext.Provider>
             </Container>
